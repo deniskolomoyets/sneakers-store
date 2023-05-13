@@ -42,9 +42,11 @@ function Card({
         </ContentLoader>
       ) : (
         <>
-          <div className={styles.favorite} onClick={onClickFavorite}>
-            <img src={isFavorite ? '/img/favorite.svg' : '/img/unfavorite.svg'} alt="favorite" />
-          </div>
+          {onFavorite && (
+            <div className={styles.favorite} onClick={onClickFavorite}>
+              <img src={isFavorite ? '/img/favorite.svg' : '/img/unfavorite.svg'} alt="favorite" />
+            </div>
+          )}
           <img width={133} height={112} src={imageUrl} alt="Shoes"></img>
           <h5>{title}</h5>
           <div className="d-flex justify-between align-center">
@@ -52,11 +54,13 @@ function Card({
               <span>Price:</span>
               <b>{price} $</b>
             </div>
-            <img
-              className={styles.plus}
-              onClick={onClickPlus}
-              src={isItemAdded(id) ? '/img/btn-checked.svg' : '/img/btn-plus.svg'} //green added button
-              alt="Plus"></img>
+            {onPlus && (
+              <img
+                className={styles.plus}
+                onClick={onClickPlus}
+                src={isItemAdded(id) ? '/img/btn-checked.svg' : '/img/btn-plus.svg'} //green added button
+                alt="Plus"></img>
+            )}
           </div>
         </>
       )}
