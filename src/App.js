@@ -121,7 +121,7 @@ function App() {
         />
         {/* сlosing the cart on click */}
         <Header onClickCart={() => setCartOpened(true)} /> {/* opening the cart on click */}
-        <Route path="/" exact>
+        <Route path="" exact>
           <Home
             items={items}
             cartItems={cartItems}
@@ -133,11 +133,11 @@ function App() {
             isLoading={isLoading}
           />
         </Route>
-        <Route path="/favorites" exact>
-          <Favorites items={favorites} onAddToFavorite={onAddToFavorite} />{' '}
+        <Route path="favorites" exact>
+          <Favorites />{' '}
           {/* take items from favorites(mockapi) */}
         </Route>
-        <Route path="/orders" exact>
+        <Route path="orders" exact>
           <Orders />
         </Route>
       </div>

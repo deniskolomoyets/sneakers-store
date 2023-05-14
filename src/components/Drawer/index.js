@@ -38,7 +38,7 @@ function Drawer({ onRemove, onClose, items = [], opened }) {
     <div className={`${styles.overlay} ${opened ? styles.overlayVisible : ''}`}>
       <div className={styles.drawer}>
         <h2 className="d-flex justify-between mb-30">
-          Bag <img onClick={onClose} className="cu-p" src="/img/btn-remove.svg" alt="Close" />{' '}
+          Bag <img onClick={onClose} className="cu-p" src="img/btn-remove.svg" alt="Close" />{' '}
           {/* close cart on click - props */}
         </h2>
         {items.length > 0 ? (
@@ -56,7 +56,7 @@ function Drawer({ onRemove, onClose, items = [], opened }) {
                   <img
                     onClick={() => onRemove(obj.id)}
                     className="removeBtn"
-                    src="/img/btn-remove.svg"
+                    src="img/btn-remove.svg"
                     alt="Remove"
                   />
                 </div>
@@ -77,7 +77,7 @@ function Drawer({ onRemove, onClose, items = [], opened }) {
                 </li>
               </ul>
               <button disabled={isLoading} onClick={onClickOrder} className="greenButton">
-                Checkout securely <img src="/img/arrow.svg" alt="Arrow" />
+                Checkout securely <img src="img/arrow.svg" alt="Arrow" />
               </button>
             </div>
           </div>
@@ -89,7 +89,7 @@ function Drawer({ onRemove, onClose, items = [], opened }) {
                 ? `Your order #${orderId} will be delivered to courier soon`
                 : 'Add at least one pair of sneakers to order.'
             }
-            image={isOrderComplete ? '/img/complete-order.jpg' : '/img/empty-cart.jpg'}
+            image={isOrderComplete ? 'img/complete-order.jpg' : 'img/empty-cart.jpg'}
           />
         )}
       </div>

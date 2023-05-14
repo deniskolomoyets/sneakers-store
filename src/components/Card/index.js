@@ -1,11 +1,12 @@
-import styles from './Card.module.scss';
 import React from 'react';
 import ContentLoader from 'react-content-loader';
+
+import styles from './Card.module.scss';
+
 import AppContext from '../../context';
 
 function Card({
   id,
-  parentId,
   title,
   imageUrl,
   price,
@@ -46,7 +47,7 @@ function Card({
         <>
           {onFavorite && (
             <div className={styles.favorite} onClick={onClickFavorite}>
-              <img src={isFavorite ? '/img/favorite.svg' : '/img/unfavorite.svg'} alt="favorite" />
+              <img src={isFavorite ? 'img/favorite.svg' : 'img/unfavorite.svg'} alt="favorite" />
             </div>
           )}
           <img width={133} height={112} src={imageUrl} alt="Shoes"></img>
@@ -60,7 +61,7 @@ function Card({
               <img
                 className={styles.plus}
                 onClick={onClickPlus}
-                src={isItemAdded(id) ? '/img/btn-checked.svg' : '/img/btn-plus.svg'} //green added button
+                src={isItemAdded(id) ? 'img/btn-checked.svg' : 'img/btn-plus.svg'} //green added button
                 alt="Plus"></img>
             )}
           </div>
