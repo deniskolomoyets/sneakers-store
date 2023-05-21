@@ -20,8 +20,9 @@ function Card({
   const obj = { id, parentId: id, title, imageUrl, price };
 
   const onClickPlus = () => {
-    onPlus(obj); //transmit data(for cart) when the button is pressed
-  };
+    onPlus(obj); 
+  };//transmit data(for cart) when the button is pressed
+
   const onClickFavorite = () => {
     onFavorite(obj);
     setIsFavorite(!isFavorite);
@@ -47,10 +48,17 @@ function Card({
         <>
           {onFavorite && (
             <div className={styles.favorite} onClick={onClickFavorite}>
-              <img src={isFavorite ? 'img/favorite.svg' : 'img/unfavorite.svg'} alt="favorite" />
+              <img
+                src={
+                  isFavorite
+                    ? 'sneakers-store/img/favorite.svg'
+                    : 'sneakers-store/img/unfavorite.svg'
+                }
+                alt="favorite"
+              />
             </div>
           )}
-          <img width={133} height={112} src={imageUrl} alt="Shoes"></img>
+          <img width={133} height={112} src={`/sneakers-store/${imageUrl}`} alt="Shoes"></img>
           <h5>{title}</h5>
           <div className="d-flex justify-between align-center">
             <div className="d-flex flex-column">
@@ -61,8 +69,13 @@ function Card({
               <img
                 className={styles.plus}
                 onClick={onClickPlus}
-                src={isItemAdded(id) ? 'img/btn-checked.svg' : 'img/btn-plus.svg'} //green added button
-                alt="Plus"></img>
+                src={
+                  isItemAdded(id)
+                    ? 'sneakers-store/img/btn-checked.svg' 
+                    : 'sneakers-store/img/btn-plus.svg' 
+                } //green added button
+                alt="Plus"
+              />
             )}
           </div>
         </>

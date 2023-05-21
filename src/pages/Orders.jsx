@@ -1,10 +1,8 @@
 import React from 'react';
 import Card from '../components/Card';
 import axios from 'axios';
-import AppContext from '../context';
 
 function Orders() {
-  const { onAddToFavorite, onAddToCart } = React.useContext(AppContext);
   const [orders, setOrders] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true); //loading
 
@@ -20,6 +18,7 @@ function Orders() {
       }
     })();
   }, []);
+  
   return (
     <div className="content p-40">
       <div className="d-flex align-center justify-between mb-40">

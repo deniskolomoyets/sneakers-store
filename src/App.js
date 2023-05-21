@@ -2,9 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
+import AppContext from './context';
+
 import Home from './pages/Home';
 import Favorites from './pages/Favorites';
-import AppContext from './context';
 import Orders from './pages/Orders';
 
 import { Route } from 'react-router-dom';
@@ -12,21 +13,24 @@ import { Route } from 'react-router-dom';
 function App() {
   const [items, setItems] = React.useState([]); //connect the list from the backend
   const [cartItems, setCartItems] = React.useState([]); // state for cart items
-  const [searchValue, setSearchValue] = React.useState(''); //search by product name
-  const [cartOpened, setCartOpened] = React.useState(false); //cart opened or not
   const [favorites, setFavorites] = React.useState([]); // state for favorite items
+
+  const [searchValue, setSearchValue] = React.useState(''); //search by product name
+
+  const [cartOpened, setCartOpened] = React.useState(false); //cart opened or not
   const [isLoading, setIsLoading] = React.useState(true); //loading
 
   React.useEffect(() => {
     async function fetchData() {
       try {
-        const [cartResponse, itemsResponse, favoritesResponse] = await Promise.all([
+        const [cartResponse, favoritesResponse, itemsResponse] = await Promise.all([
           axios.get('https://64382ecff3a0c40814acdc08.mockapi.io/cart'),
-          axios.get('https://64382ecff3a0c40814acdc08.mockapi.io/items'),
           axios.get('https://64382ecff3a0c40814acdc08.mockapi.io/favorites'),
+          axios.get('https://64382ecff3a0c40814acdc08.mockapi.io/items'),
         ]);
 
         setIsLoading(false);
+
         setCartItems(cartResponse.data);
         setFavorites(favoritesResponse.data);
         setItems(itemsResponse.data);
@@ -134,8 +138,7 @@ function App() {
           />
         </Route>
         <Route path="/favorites" exact>
-          <Favorites />{' '}
-          {/* take items from favorites(mockapi) */}
+          <Favorites /> {/* take items from favorites(mockapi) */}
         </Route>
         <Route path="/orders" exact>
           <Orders />

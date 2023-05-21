@@ -6,6 +6,7 @@ import { useCart } from '../../hooks/useCart';
 
 import styles from './Drawer.module.scss';
 
+
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function Drawer({ onRemove, onClose, items = [], opened }) {
@@ -38,7 +39,7 @@ function Drawer({ onRemove, onClose, items = [], opened }) {
     <div className={`${styles.overlay} ${opened ? styles.overlayVisible : ''}`}>
       <div className={styles.drawer}>
         <h2 className="d-flex justify-between mb-30">
-          Bag <img onClick={onClose} className="cu-p" src="img/btn-remove.svg" alt="Close" />{' '}
+          Bag <img onClick={onClose} className="cu-p" src="sneakers-store/img/btn-remove.svg" alt="Close" />{' '}
           {/* close cart on click - props */}
         </h2>
         {items.length > 0 ? (
@@ -47,16 +48,18 @@ function Drawer({ onRemove, onClose, items = [], opened }) {
               {items.map((obj) => (
                 <div key={obj.id} className="cartItem d-flex align-center mb-20">
                   <div
-                    style={{ backgroundImage: `url(${obj.imageUrl})` }}
+                    style={{ backgroundImage:  `url(/sneakers-store/${obj.imageUrl})` }}
                     className="cartItemImg"></div>
+
                   <div className="mr-20 flex">
                     <p className="mb-5">{obj.title}</p>
                     <b>{obj.price}$</b>
                   </div>
+                  
                   <img
                     onClick={() => onRemove(obj.id)}
                     className="removeBtn"
-                    src="img/btn-remove.svg"
+                    src="sneakers-store/img/btn-remove.svg"
                     alt="Remove"
                   />
                 </div>
@@ -73,11 +76,11 @@ function Drawer({ onRemove, onClose, items = [], opened }) {
                 <li>
                   <span>Tax 5%:</span>
                   <div></div>
-                  <b>{(totalPrice / 100) * 5} $</b>
+                  <b>{Math.round((totalPrice / 100) * 5)} $</b>
                 </li>
               </ul>
               <button disabled={isLoading} onClick={onClickOrder} className="greenButton">
-                Checkout securely <img src="img/arrow.svg" alt="Arrow" />
+                Checkout securely <img src="sneakers-store/img/arrow.svg" alt="Arrow" />
               </button>
             </div>
           </div>
@@ -89,7 +92,7 @@ function Drawer({ onRemove, onClose, items = [], opened }) {
                 ? `Your order #${orderId} will be delivered to courier soon`
                 : 'Add at least one pair of sneakers to order.'
             }
-            image={isOrderComplete ? 'img/complete-order.jpg' : 'img/empty-cart.jpg'}
+            image={isOrderComplete ? "sneakers-store/img/complete-order.jpg" : "sneakers-store/img/empty-cart.jpg"}
           />
         )}
       </div>
